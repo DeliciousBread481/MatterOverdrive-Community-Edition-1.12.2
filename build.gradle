@@ -1,5 +1,9 @@
 buildscript {
     repositories {
+        flatDir {
+            name 'LocalLibs'
+            dir file('libs')
+        }
         jcenter()
         mavenCentral()
         maven { url = "http://files.minecraftforge.net/maven" }
@@ -42,6 +46,10 @@ minecraft {
 }
 
 repositories {
+    flatDir {
+        name 'LocalLibs'
+        dir file('libs')
+    }
     mavenCentral()
     maven {
         name "tterrag"
@@ -52,6 +60,7 @@ repositories {
         name "progwml6"
         url "http://dvs1.progwml6.com/files/maven"
     }
+    maven { url "https://mvnrepository.com/artifact/mcp.mobius.waila/Hwyla" }
 }
 
 dependencies {
