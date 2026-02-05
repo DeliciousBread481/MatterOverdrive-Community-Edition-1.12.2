@@ -305,6 +305,9 @@ public class TileEntityMachineReplicator extends MOTileEntityMachineMatter
 
 	@Override
 	public boolean canConnectFromSide(IBlockState blockState, EnumFacing side) {
+        if (!blockState.getProperties().containsKey(MOBlock.PROPERTY_DIRECTION)) {  
+            return false;  
+        }  
         return blockState.getValue(MOBlock.PROPERTY_DIRECTION).getOpposite().equals(side);
 	}
 

@@ -383,6 +383,9 @@ public class TileEntityMachinePatternStorage extends MOTileEntityMachineEnergy i
 
 	@Override
 	public boolean canConnectFromSide(IBlockState blockState, EnumFacing side) {
+        if (!blockState.getProperties().containsKey(MOBlock.PROPERTY_DIRECTION)) {  
+            return false;  
+        }
 		EnumFacing facing = blockState.getValue(MOBlock.PROPERTY_DIRECTION);
 		return facing.getOpposite() == side;
 	}
