@@ -199,14 +199,18 @@ public class AndroidPlayer implements IEnergyStorage, IAndroid {
 		return false;
 	}
 
-	public void init(EntityPlayer player) {
-		if (ENERGY == null) {
-			ENERGY = EntityDataManager.createKey(EntityPlayer.class, DataSerializers.VARINT);
-		}
-		player.getDataManager().register(ENERGY, maxEnergy);
-		registerAttributes(player);
-		this.player = player;
-	}
+    public void init(EntityPlayer player) {  
+        if (ENERGY == null) {  
+            ENERGY = EntityDataManager.createKey(EntityPlayer.class, DataSerializers.VARINT);  
+        }  
+        try {  
+            player.getDataManager().register(ENERGY, maxEnergy);  
+        } catch (IllegalArgumentException e) {  
+         
+        }  
+        registerAttributes(player);  
+        this.player = player;  
+    }
 
 	/*
 	 * @Override public void init(Entity entity, World world) {
